@@ -1,0 +1,40 @@
+<div class="d-flex flex-no-wrap flex-grow-1" id="wrapper" style="overflow-x: hidden;">
+    <!-- Default sidebar -->
+    @if (hasCustomSidebar())
+    {
+        <div class="d-flex flex-column flex-shrink-0 p-2 text-bg-dark col-2" style="z-index: 10;" id="sidebar">
+            <ng-container *ngTemplateOutlet="sidebarTemplate"></ng-container>
+        </div>
+    }
+    @else
+    {
+        <div class="d-flex flex-column flex-shrink-0 p-2 text-bg-dark col-2" style="z-index: 10;" id="sidebar">
+            <ccnextgen-sidebar [items]="sidebarItems" [beforeMenu]="sidebarBeforeMenu" [afterMenu]="sidebarAfterMenu"></ccnextgen-sidebar>
+        </div>
+    }
+
+    <div class="flex-grow-1">
+    @if(hasCustomTopbar())
+    {
+        <div class="topbar bg-secondary-subtle p-3 shadow-sm px-5 w-100" style="border-bottom: 1px solid rgba(0,0,0,.05)" id="topmenu">
+            <ng-container *ngTemplateOutlet="topbarTemplate" class="w-100"></ng-container>
+        </div>
+    }
+
+    @if(containerFluid)
+    {
+        <div class="container-fluid">
+            <main role="main" class="py-3">
+                <router-outlet></router-outlet>
+            </main>
+        </div>
+    }
+    @else {
+        <div class="container">
+            <main role="main" class="py-3">
+                <router-outlet></router-outlet>
+            </main>
+        </div>
+    }
+    </div>
+</div>

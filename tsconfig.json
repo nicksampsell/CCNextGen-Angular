@@ -6,6 +6,11 @@
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
+    "paths": {
+      "ccnextgen-layout": [
+        "./projects/ccnextgen-layout/src/public-api.ts"
+      ],
+    },
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,
@@ -22,5 +27,25 @@
     "typeCheckHostBindings": true,
     "strictTemplates": true
   },
-  "files": []
+  "files": [],
+  "references": [
+    {
+      "path": "./projects/layout/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/layout/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/demo-app/tsconfig.app.json"
+    },
+    {
+      "path": "./projects/demo-app/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/ccnextgen-layout/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/ccnextgen-layout/tsconfig.spec.json"
+    }
+  ]
 }

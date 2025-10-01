@@ -1,0 +1,10 @@
+<ccnextgen-header [buttons]="[
+    {
+        icon: 'edit',
+        route: '/form',
+        title: 'Create'
+    }]">Hello</ccnextgen-header>
+
+    <ccnextgen-search [search]="search" (searchEvent)="handleSearch($event)"></ccnextgen-search>
+
+    <p>Searching for... <strong>{{search}}</strong></p>

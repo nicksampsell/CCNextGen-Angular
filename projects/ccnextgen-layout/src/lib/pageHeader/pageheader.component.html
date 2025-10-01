@@ -1,0 +1,27 @@
+<header class="d-flex flex-row justify-content-between align-items-center  mb-3">
+    <div class="grow">
+        @if(!!titleLinkUrl)
+        {
+            <a [routerLink]="titleLinkUrl"><h1 class="display-3"><ng-content></ng-content></h1></a>
+        }
+        @else{
+            <h1 class="display-3"><ng-content></ng-content></h1>
+        }
+    </div>
+    <div class="d-flex flex-row align-items-center gap-3">
+
+        @if(getButtons)
+        {
+            @for(button of getButtons; track button)
+            {
+                <a [class]="['btn',buttonClass(button.color, button.colorAsOutline), 'has-icon']" [routerLink]="button.route">
+                    @if(!!button.icon)
+                    {
+                    <i class="material-symbols-outlined">{{button.icon}}</i>
+                    }
+                    <span>{{button.title}}</span>
+                </a>
+            }
+        }
+
+    </div>
