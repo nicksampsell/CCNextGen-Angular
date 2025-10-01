@@ -259,9 +259,9 @@ deleteWarning | string | no | Custom confirmation message before delete (default
 ## Outputs
 | Event| Type | Description |
 | -- | -- | -- |
-editAction | `EventEmitter<string | number>` | Emitted when the Edit button is clicked.
-deleteAction | `EventEmitter<string | number>` | Emitted after delete confirmation and Delete button click.
-detailsAction | `EventEmitter<string | number>` | Emitted when the Details button is clicked.
+editAction | `EventEmitter<string ¦ number>` | Emitted when the Edit button is clicked.
+deleteAction | `EventEmitter<string ¦ number>` | Emitted after delete confirmation and Delete button click.
+detailsAction | `EventEmitter<string ¦ number>` | Emitted when the Details button is clicked.
 
 
 # Permitted Color Value Strings
