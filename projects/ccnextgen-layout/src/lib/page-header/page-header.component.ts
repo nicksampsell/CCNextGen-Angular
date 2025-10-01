@@ -4,13 +4,13 @@ import { TopbarComponent } from '../topbar/topbar.component';
 import { CommonModule } from '@angular/common';
 import { SidebarItem } from '../sidebar/sidebar.model';
 import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
-import { ButtonModel } from './buttom.model';
+import { ButtonModel } from './button.model';
 
 
 @Component({
     selector: 'ccnextgen-header',
-    templateUrl: './pageheader.component.html',
-    styleUrl: './pageheader.component.css',
+    templateUrl: './page-header.component.html',
+    styleUrl: './page-header.component.css',
     standalone: true,
     imports: [CommonModule, RouterModule],
     encapsulation: ViewEncapsulation.None

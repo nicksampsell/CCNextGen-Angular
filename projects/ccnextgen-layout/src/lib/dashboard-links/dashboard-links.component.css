@@ -1,0 +1,19 @@
+.dashboard-links a {
+    text-decoration: none;
+    color: var(--bs-text-color);
+}
+.dashboard-links .text-center a {
+    text-align: center;
+    width: 100%;
+}
+
+.dashboard-links .item:hover .card {
+    background: var(--bs-tertiary-bg)
+}
+
+.dashboard-links .item:active .card {
+    box-shadow: 0.0625rem 0.0625rem 0.125rem inset var(--bs-tertiary-color);
+}
+.clickable {
+    cursor: pointer;
+}

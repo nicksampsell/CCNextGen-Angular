@@ -9,7 +9,7 @@ import { CCNextGenBaseLayout, PageHeader, SidebarComponent, ButtonModel, SearchB
   templateUrl: './index.component.html',
   standalone: true
 })
-export class IndexPage {
+export class ErrorPage {
   protected readonly title = signal('demo-app');
 
   search:string = '';

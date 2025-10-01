@@ -3,8 +3,42 @@
         icon: 'edit',
         route: '/form',
         title: 'Create'
-    }]">Hello</ccnextgen-header>
+    }]">Manage Items</ccnextgen-header>
 
     <ccnextgen-search [search]="search" (searchEvent)="handleSearch($event)"></ccnextgen-search>
 
     <p>Searching for... <strong>{{search}}</strong></p>
+
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>1</td>
+                <td>Item 1</td>
+                <td>This is item 1</td>
+                <td class="text-end">
+                    <ccnextgen-crud-buttons 
+                        [buttonsAsOutline]="false"
+                        [itemId]="1"
+
+                        deleteUrl="delete"
+                        editUrl="edit"
+                        detailsUrl="details"
+
+                        buttonSize="small"
+
+                        (deleteAction)="onDelete($event)"
+                        (editAction)="onEdit($event)"
+                        (detailsAction)="onDetails($event)"
+                    ></ccnextgen-crud-buttons>
+                </td>
+            </tr>
+        </tbody>
+    </table>

@@ -1,0 +1,16 @@
+<div class="d-flex justify-content-end align-items-center gap-1 align-self-end">
+    @if(showEdit)
+    {
+        <button [class]="['btn',getColorClass(editColor),getButtonSize()]" (click)="onEdit()">Edit</button>
+    }
+
+    @if(showDetails)
+    {
+        <button [class]="['btn',getColorClass(detailsColor),getButtonSize()]" (click)="onDetails()">Details</button>
+    }
+
+    @if(showDelete)
+    {
+        <button [class]="['btn',getColorClass(deleteColor),getButtonSize()]" (click)="onDelete()">Delete</button>
+    }
+</div>

@@ -1,49 +1,49 @@
-<ccnextgen-layout [sidebarItems]="[
-  {
-    title: 'Home',
-    route: '/',
-    icon: 'home',
-  }
-]" [sidebarBeforeMenu]="beforeMenu"
-[topbarTemplate]="topbar">
-</ccnextgen-layout>
+<ccnextgen-loading *ngIf="loading" [modal]="false" [fullscreen]="true"></ccnextgen-loading>
+  <ccnextgen-layout [sidebarItems]="[
+    {
+      title: 'Home',
+      route: '/',
+      icon: 'home',
+    }
+  ]" [sidebarBeforeMenu]="beforeMenu"
+  [topbarTemplate]="topbar">
+  </ccnextgen-layout>
 
-<ng-template #beforeMenu>
-<hr />
-<div class="text-center">
-  <span style="font-size: 1.2rem">User's Name</span><br />
-  <span class="ms-2" style="font-size: 0.9rem">Position</span>
-</div>
-</ng-template>
-
-<ng-template #topbar>
-  <div class="d-flex justify-content-end align-items-center">
-    Hello, <strong>Username</strong>
+  <ng-template #beforeMenu>
+  <hr />
+  <div class="text-center">
+    <span style="font-size: 1.2rem">User's Name</span><br />
+    <span class="ms-2" style="font-size: 0.9rem">Position</span>
   </div>
-</ng-template>
+  </ng-template>
+
+  <ng-template #topbar>
+    <div class="d-flex justify-content-end align-items-center">
+      Hello, <strong>Username</strong>
+    </div>
+  </ng-template>
 
 
-<ng-template #customSidebar>
-  <ccnextgen-sidebar>
-    <hr />
-    <ul class="nav nav-pills flex-column mb-auto flex-grow-1">
-      <li>
-          <a routerLink="/">
-              <div class="d-flex justify-content-start align-items-center g-2">
-                  <i class="material-symbols-outlined me-2">home</i>
-                  <span class="text-nowrap flex-grow-1">Home</span>
-              </div>
-          </a>
-      </li>
-      <li>
-          <a routerLink="/">
-              <div class="d-flex justify-content-start align-items-center g-2">
-                  <i class="material-symbols-outlined me-2">help</i>
-                  <span class="text-nowrap flex-grow-1">Help</span>
-              </div>
-          </a>
-      </li>
-    </ul>
-  </ccnextgen-sidebar>
-</ng-template>
-<router-outlet />
+  <ng-template #customSidebar>
+    <ccnextgen-sidebar>
+      <hr />
+      <ul class="nav nav-pills flex-column mb-auto flex-grow-1">
+        <li>
+            <a routerLink="/">
+                <div class="d-flex justify-content-start align-items-center g-2">
+                    <i class="material-symbols-outlined me-2">home</i>
+                    <span class="text-nowrap flex-grow-1">Home</span>
+                </div>
+            </a>
+        </li>
+        <li>
+            <a routerLink="/">
+                <div class="d-flex justify-content-start align-items-center g-2">
+                    <i class="material-symbols-outlined me-2">help</i>
+                    <span class="text-nowrap flex-grow-1">Help</span>
+                </div>
+            </a>
+        </li>
+      </ul>
+    </ccnextgen-sidebar>
+  </ng-template>

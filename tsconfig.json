@@ -6,11 +6,7 @@
     "strict": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
-    "paths": {
-      "ccnextgen-layout": [
-        "./projects/ccnextgen-layout/src/public-api.ts"
-      ],
-    },
+    "paths": {},
     "noImplicitReturns": true,
     "noFallthroughCasesInSwitch": true,
     "skipLibCheck": true,

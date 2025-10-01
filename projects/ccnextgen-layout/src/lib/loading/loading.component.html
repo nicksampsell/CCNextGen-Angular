@@ -1,0 +1,14 @@
+<div [class.fullscreen]="fullscreen" [class.modal]="modal" class="loading-overlay">
+    <div class="card rounded-4 shadow">
+        <div class="card-body text-center">
+            <img src="{{config.logoUrl}}" alt="{{config.appTitle}}" class="loading-logo" />
+            <div class="d-flex justify-content-center align-items-center gap-2">
+                <div class="spinner"></div>
+                @if(message)
+                {
+                    <span class="display-8">{{message}}</span>
+                }
+            </div>
+        </div>
+    </div>
+</div>
