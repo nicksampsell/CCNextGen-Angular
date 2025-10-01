@@ -34,6 +34,9 @@ export class App {
       icon: 'help',
     },
     {
+      isHR: true
+    },
+    {
       title: 'Editor',
       route: '/edit',
       icon: 'edit',

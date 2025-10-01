@@ -16,7 +16,6 @@ import { DashboardLinkModel } from './dashboard-link.model';
     encapsulation: ViewEncapsulation.None
 })
 export class DashboardLinks {
-    @Input() titleLinkUrl?:string
 
     private _dashboardLinks: DashboardLinkModel[] = [];
 

@@ -22,11 +22,18 @@ export class CCNextGenBaseLayout implements OnChanges{
     @Input() sidebarBeforeMenu?: TemplateRef<any>;
     @Input() sidebarAfterMenu?: TemplateRef<any>;
     @Input() containerFluid: boolean = false;
-    @Input() set sidebarItems(items: (SidebarItem | { title: string; route: string; icon?: string, isHR?:boolean })[]) {
+    @Input() set sidebarItems(items: (SidebarItem | {
+        title?: string;
+        route?: string;
+        icon?: string;
+        isHR?: boolean;
+    })[]) {
         this._sidebarItems = items.map(item =>
             item instanceof SidebarItem
-            ? item
-            : new SidebarItem(item.title, item.route, item.icon, item.isHR)
+                ? item
+                : item.isHR
+                    ? new SidebarItem(true)  // only isHR
+                    : new SidebarItem(item.title!, item.route!, item.icon ?? null, false)
         );
     }
 

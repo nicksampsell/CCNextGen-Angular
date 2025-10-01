@@ -19,17 +19,24 @@
             <ul class="nav nav-pills flex-column mb-auto flex-grow-1 w-100">
                 @for(item of items; track item)
                 {
-                    <li class="mb-1">
-                        <a [routerLink]="[item.route]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link text-white">
-                            <div class="d-flex justify-content-start align-items-center g-2">
-                                @if(!!item.icon)
-                                {
-                                    <i class="material-symbols-outlined me-2">{{item.icon}}</i>
-                                }
-                                <span class="text-nowrap flex-grow-1 text-start">{{item.title}}</span>
-                            </div>
-                        </a>
-                    </li>   
+                    @if(item.isHR)
+                    {
+                        <li><hr /></li>
+                        
+                    }
+                    @else {
+                        <li class="mb-1">
+                            <a [routerLink]="[item.route]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link text-white">
+                                <div class="d-flex justify-content-start align-items-center g-2">
+                                    @if(!!item.icon)
+                                    {
+                                        <i class="material-symbols-outlined me-2">{{item.icon}}</i>
+                                    }
+                                    <span class="text-nowrap flex-grow-1 text-start">{{item.title}}</span>
+                                </div>
+                            </a>
+                        </li> 
+                    }  
                 }
             </ul>
         </div>
