@@ -6,19 +6,37 @@ import { CCNextGenBaseLayout, LoadingComponent, SidebarComponent } from 'ccnextg
 
 @Component({
   selector: 'app-root',
-  imports: [CCNextGenBaseLayout, SidebarComponent, RouterLink, LoadingComponent, CommonModule],
+  imports: [CCNextGenBaseLayout, LoadingComponent, CommonModule],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })
 export class App {
   protected readonly title = signal('demo-app');
-  loading = true;
+  loading = false;
 
   
   ngOnInit() {
     // Simulate loading delay (e.g. 3 seconds)
     setTimeout(() => {
-      //this.loading = false;
+      this.loading = false;
     }, 5000);
   }
+
+  buttons = [
+    {
+      title: 'Home',
+      route: '/',
+      icon: 'home',
+    },
+    {
+      title: 'Help',
+      route: '/help',
+      icon: 'help',
+    },
+    {
+      title: 'Editor',
+      route: '/edit',
+      icon: 'edit',
+    }
+  ]
 }

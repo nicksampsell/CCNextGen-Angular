@@ -14,7 +14,7 @@ export const appConfig: ApplicationConfig = {
     {
       provide: CCNEXTGEN_LAYOUT_CONFIG,
       useValue: {
-        appTitle: 'Testing'
+        appTitle: 'Surplus Management'
       }
     }
   ]

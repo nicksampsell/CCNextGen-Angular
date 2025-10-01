@@ -19,8 +19,8 @@
             <ul class="nav nav-pills flex-column mb-auto flex-grow-1 w-100">
                 @for(item of items; track item)
                 {
-                    <li>
-                        <a [routerLink]="[item.route]" routerLinkActive="active" class="nav-link text-white">
+                    <li class="mb-1">
+                        <a [routerLink]="[item.route]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link text-white">
                             <div class="d-flex justify-content-start align-items-center g-2">
                                 @if(!!item.icon)
                                 {

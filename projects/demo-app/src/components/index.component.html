@@ -1,6 +1,6 @@
 <ccnextgen-header [buttons]="[
     {
-        icon: 'edit',
+        icon: 'cancel',
         route: '/form',
         title: 'Create'
     }]">Manage Items</ccnextgen-header>
@@ -24,20 +24,7 @@
                 <td>Item 1</td>
                 <td>This is item 1</td>
                 <td class="text-end">
-                    <ccnextgen-crud-buttons 
-                        [buttonsAsOutline]="false"
-                        [itemId]="1"
-
-                        deleteUrl="delete"
-                        editUrl="edit"
-                        detailsUrl="details"
-
-                        buttonSize="small"
-
-                        (deleteAction)="onDelete($event)"
-                        (editAction)="onEdit($event)"
-                        (detailsAction)="onDetails($event)"
-                    ></ccnextgen-crud-buttons>
+                    <ccnextgen-crud-buttons [itemId]="1"></ccnextgen-crud-buttons>
                 </td>
             </tr>
         </tbody>
