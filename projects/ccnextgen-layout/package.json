@@ -16,5 +16,10 @@
       "optional": false
     }
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "scripts": {
+    "compodoc": "compodoc",
+    "generate-docs": "compodoc -p tsconfig.lib.json",
+    "serve-docs": "compodoc -s tsconfig.lib.json"
+  }
 }
