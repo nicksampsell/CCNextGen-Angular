@@ -5,8 +5,6 @@ import { CommonModule } from '@angular/common';
 import { SidebarItem } from '../sidebar/sidebar.model';
 import { Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
 
-
-
 @Component({
     selector: 'ccnextgen-crud-buttons',
     templateUrl: './crud-buttons.component.html',
