@@ -1,9 +1,6 @@
 import { Component, Input, OnChanges, OnInit, signal, TemplateRef, ViewEncapsulation } from '@angular/core';
-import { SidebarComponent } from '../sidebar/sidebar.component';
-import { TopbarComponent } from '../topbar/topbar.component';
 import { CommonModule } from '@angular/common';
-import { SidebarItem } from '../sidebar/sidebar.model';
-import { Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { Router, } from '@angular/router';
 import { DashboardLinkModel } from './dashboard-link.model';
 
 
@@ -12,7 +9,7 @@ import { DashboardLinkModel } from './dashboard-link.model';
     templateUrl: './dashboard-links.component.html',
     styleUrl: './dashboard-links.component.css',
     standalone: true,
-    imports: [CommonModule, RouterModule],
+    imports: [CommonModule],
     encapsulation: ViewEncapsulation.None
 })
 export class DashboardLinks {

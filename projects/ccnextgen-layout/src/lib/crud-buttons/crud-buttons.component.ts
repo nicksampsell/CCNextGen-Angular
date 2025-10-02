@@ -3,14 +3,14 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 import { TopbarComponent } from '../topbar/topbar.component';
 import { CommonModule } from '@angular/common';
 import { SidebarItem } from '../sidebar/sidebar.model';
-import { Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'ccnextgen-crud-buttons',
     templateUrl: './crud-buttons.component.html',
     styleUrl: './crud-buttons.component.css',
     standalone: true,
-    imports: [CommonModule, RouterModule],
+    imports: [CommonModule],
     encapsulation: ViewEncapsulation.None
 })
 export class CrudButtons {

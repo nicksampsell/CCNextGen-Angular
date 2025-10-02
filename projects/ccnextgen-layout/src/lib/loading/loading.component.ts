@@ -1,9 +1,7 @@
 import { Component, Input, OnChanges, OnInit, signal, TemplateRef, ViewEncapsulation } from '@angular/core';
-import { SidebarComponent } from '../sidebar/sidebar.component';
-import { TopbarComponent } from '../topbar/topbar.component';
+
 import { CommonModule } from '@angular/common';
-import { SidebarItem } from '../sidebar/sidebar.model';
-import { Router, RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+
 import { ConfigService } from '../config/config.service';
 
 
@@ -13,7 +11,7 @@ import { ConfigService } from '../config/config.service';
     templateUrl: './loading.component.html',
     styleUrl: './loading.component.css',
     standalone: true,
-    imports: [CommonModule, RouterModule],
+    imports: [CommonModule],
     encapsulation: ViewEncapsulation.None
 })
 export class LoadingComponent implements OnChanges {

@@ -1,10 +1,9 @@
 import { Component, Input, OnChanges, OnInit, signal, TemplateRef, ViewEncapsulation } from '@angular/core';
-import { SidebarComponent } from '../sidebar/sidebar.component';
-import { TopbarComponent } from '../topbar/topbar.component';
+
 import { CommonModule } from '@angular/common';
-import { SidebarItem } from '../sidebar/sidebar.model';
-import { RouterLink, RouterModule, RouterOutlet } from '@angular/router';
+
 import { ButtonModel } from './button.model';
+import { RouterLink } from '@angular/router';
 
 
 @Component({
@@ -12,7 +11,7 @@ import { ButtonModel } from './button.model';
     templateUrl: './page-header.component.html',
     styleUrl: './page-header.component.css',
     standalone: true,
-    imports: [CommonModule, RouterModule],
+    imports: [CommonModule, RouterLink],
     encapsulation: ViewEncapsulation.None
 })
 export class PageHeader {

@@ -27,14 +27,19 @@ export class CCNextGenBaseLayout implements OnChanges{
         route?: string;
         icon?: string;
         isHR?: boolean;
-    })[]) {
-        this._sidebarItems = items.map(item =>
-            item instanceof SidebarItem
-                ? item
-                : item.isHR
-                    ? new SidebarItem(true)  // only isHR
-                    : new SidebarItem(item.title!, item.route!, item.icon ?? null, false)
-        );
+    })[] | null | undefined) {
+        this._sidebarItems = (items ?? []).map(item => {
+            if (item instanceof SidebarItem) return item;
+
+            if (item.isHR) return new SidebarItem(true);
+
+            // Provide fallback defaults or throw error/log if required properties missing
+            const title = item.title ?? 'Untitled';
+            const route = item.route ?? '/';
+            const icon = item.icon ?? null;
+
+            return new SidebarItem(title, route, icon, false);
+        });
     }
 
     get sidebarItems(): SidebarItem[] {

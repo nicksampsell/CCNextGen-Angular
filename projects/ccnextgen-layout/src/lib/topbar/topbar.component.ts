@@ -5,6 +5,7 @@ import { ConfigService } from '../config/config.service';
     selector: 'ccnextgen-topbar',
     templateUrl: './topbar.component.html',
     styleUrl: './topbar.component.css',
+    standalone: true
 })
 export class TopbarComponent{
     

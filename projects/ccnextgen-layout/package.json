@@ -1,9 +1,19 @@
 {
   "name": "ccnextgen-layout",
   "version": "0.0.2",
+  "scripts": {
+    "build": "ng build ccnextgen-layout && npm run build:schematics",
+    "build:schematics": "tsc -p tsconfig.schematics.json",
+    "postbuild": "npx copyfiles -u 1 schematics/**/* ../../dist/ccnextgen-layout"
+  },
   "peerDependencies": {
+    "@angular-devkit/schematics": "^20.3.3",
     "@angular/common": "^20.3.0",
     "@angular/core": "^20.3.0"
+  },
+  "schematics": "./schematics/collection.json",
+  "ng-add": {
+    "save": "devDependencies"
   },
   "dependencies": {
     "tslib": "^2.3.0"
@@ -14,7 +24,22 @@
     },
     "@angular/core": {
       "optional": false
+    },
+    "@angular-devkit/schematics": {
+      "optional": true
     }
   },
-  "sideEffects": false
+  "sideEffects": false,
+  "ngPackage": {
+    "lib": {
+      "entryFile": "./src/public-api.ts"
+    }
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "^20.3.3",
+    "@types/node": "^24.6.1",
+    "copyfiles": "file:../../node_modules/copyfiles",
+    "ng-packagr": "^20.3.0",
+    "typescript": "file:../../node_modules/typescript"
+  }
 }

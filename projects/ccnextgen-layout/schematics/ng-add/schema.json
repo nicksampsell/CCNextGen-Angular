@@ -1,0 +1,31 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "My Library Component Schematic",
+  "description": "Generates a new component for My Library.",
+  "type": "object",
+  "properties": {
+    "project": {
+      "type": "string",
+      "description": "The name of the project.",
+      "$default": {
+        "$source": "projectName"
+      }
+    },
+    "appTitle": {
+      "type": "string",
+      "description": "Title of the application",
+      "default": "CCNextGen Application"
+    },
+    "logoUrl": {
+      "type": "string",
+      "description": "Relative path to logo (from root directory)",
+      "default": "/assets/ccnextgen-layout/cc_logo.png"
+    },
+    "appConfigPath": {
+      "type": "string",
+      "description": "Path to your app.config.ts",
+      "default": "src/app/app.config.ts"
+    }
+   },
+  "required": []
+}
