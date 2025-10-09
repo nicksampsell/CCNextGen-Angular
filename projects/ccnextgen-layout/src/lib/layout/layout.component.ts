@@ -21,12 +21,14 @@ export class CCNextGenBaseLayout implements OnChanges{
     @Input() topbarTemplate?: TemplateRef<any>;
     @Input() sidebarBeforeMenu?: TemplateRef<any>;
     @Input() sidebarAfterMenu?: TemplateRef<any>;
+    @Input() excludeSidebar: boolean = false;
     @Input() containerFluid: boolean = false;
     @Input() set sidebarItems(items: (SidebarItem | {
         title?: string;
         route?: string;
         icon?: string;
         isHR?: boolean;
+        showIf?: (() => boolean) | boolean | null;
     })[] | null | undefined) {
         this._sidebarItems = (items ?? []).map(item => {
             if (item instanceof SidebarItem) return item;
@@ -37,8 +39,9 @@ export class CCNextGenBaseLayout implements OnChanges{
             const title = item.title ?? 'Untitled';
             const route = item.route ?? '/';
             const icon = item.icon ?? null;
+            const showIf = item.showIf ?? null;
 
-            return new SidebarItem(title, route, icon, false);
+            return new SidebarItem(title, route, icon, false, showIf);
         });
     }
 

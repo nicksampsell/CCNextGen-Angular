@@ -1,17 +1,24 @@
 <div class="d-flex flex-no-wrap flex-grow-1" id="wrapper" style="overflow-x: hidden;">
     <!-- Default sidebar -->
-    @if (hasCustomSidebar())
+    @if(!excludeSidebar)
     {
-        <div class="d-flex flex-column flex-shrink-0 p-2 text-bg-dark col-2" style="z-index: 10;" id="sidebar">
-            <ng-container *ngTemplateOutlet="sidebarTemplate"></ng-container>
-        </div>
-    }
-    @else
-    {
-        <div class="d-flex flex-column flex-shrink-0 p-2 text-bg-dark col-2" style="z-index: 10;" id="sidebar">
-            <ccnextgen-sidebar [items]="sidebarItems" [beforeMenu]="sidebarBeforeMenu" [afterMenu]="sidebarAfterMenu"></ccnextgen-sidebar>
-        </div>
-    }
+        <ng-content #sidebar> 
+            <div class="d-flex flex-column flex-shrink-0 p-2 text-bg-dark col-2" style="z-index: 10;" id="sidebar">
+            @if (hasCustomSidebar())
+            {
+                    <ng-container *ngTemplateOutlet="sidebarTemplate">
+                        <ng-content select="sidebar-internal"></ng-content>
+                    </ng-container>
+            }
+            @else
+            {
+                    <ccnextgen-sidebar [items]="sidebarItems" [beforeMenu]="sidebarBeforeMenu" [afterMenu]="sidebarAfterMenu">
+                        <ng-content select="sidebar-internal"></ng-content>
+                    </ccnextgen-sidebar>
+            }
+            </div>
+        </ng-content>
+}
 
     <div class="flex-grow-1">
     @if(hasCustomTopbar())

@@ -3,7 +3,7 @@ import { SidebarComponent } from '../sidebar/sidebar.component';
 import { TopbarComponent } from '../topbar/topbar.component';
 import { CommonModule } from '@angular/common';
 import { SidebarItem } from '../sidebar/sidebar.model';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
     selector: 'ccnextgen-crud-buttons',
@@ -32,33 +32,72 @@ export class CrudButtons {
     @Output() deleteAction = new EventEmitter<string | number>();
     @Output() detailsAction = new EventEmitter<string | number>();
 
-    constructor(private router:Router) {}
+    constructor(private router:Router, private route: ActivatedRoute) {}
+
+    private navigate(actionUrl: string | null, defaultActionSegment: string) {
+        const id = this.itemId;
+        const knownActions = ['edit', 'details', 'delete', 'view', 'update', 'create'];
+        const route = actionUrl?.trim();
+
+        // If route is empty or null — navigate up one level logically
+        if (!route) {
+            const currentUrl = this.router.url.replace(/\/+$/, ''); // Remove trailing slash
+            const segments = currentUrl.split('/').filter(Boolean);
+
+            const last = segments[segments.length - 2]?.toLowerCase();
+            const isKnownAction = knownActions.includes(last);
+            const isLastSegmentId = !isNaN(Number(segments[segments.length - 1]));
+
+            // Remove action + id if present, else remove just last segment
+            const baseSegments = isKnownAction && isLastSegmentId
+                ? segments.slice(0, -2)
+                : segments.slice(0, -1);
+
+            const newUrl = '/' + baseSegments.join('/');
+            this.router.navigateByUrl(newUrl);
+            return;
+        }
+
+        // If the actionUrl matches the default action segment (e.g. "edit") or is empty, treat it as relative route
+        const isDefault = route.toLowerCase() === defaultActionSegment.toLowerCase();
+
+        if (!isDefault) {
+            // Route is a custom absolute path or something else, just navigate normally with id
+            this.router.navigate([route, id]);
+        } else {
+            // Build relative route by stripping trailing action/id and appending new action/id
+            const currentUrl = this.router.url.replace(/\/+$/, '');
+            const segments = currentUrl.split('/').filter(Boolean);
+
+            const last = segments[segments.length - 2]?.toLowerCase();
+            const isLastAction = knownActions.includes(last);
+
+            const baseSegments = isLastAction && !isNaN(Number(segments[segments.length - 1]))
+                ? segments.slice(0, -2)
+                : segments;
+
+            const newUrl = [...baseSegments, defaultActionSegment, id];
+            this.router.navigate(newUrl);
+        }
+    }
+
 
     onDelete(){
         if(confirm(this.deleteWarning))
         {
             this.deleteAction.emit(this.itemId);
-            if(this.deleteUrl)
-            {
-                this.router.navigate([this.deleteUrl, this.itemId]);
-            }
+            this.navigate(this.deleteUrl, 'delete');
         }
     }
 
     onEdit(){
         this.editAction.emit(this.itemId);
-        if(this.editUrl)
-        {
-            this.router.navigate([this.editUrl, this.itemId]);
-        }
+        this.navigate(this.editUrl, 'edit');
     }
 
     onDetails(){
         this.detailsAction.emit(this.itemId);
-        if(this.detailsUrl)
-        {
-            this.router.navigate([this.detailsUrl, this.itemId]);
-        }
+        this.navigate(this.detailsUrl, 'details')
     }
 
     getButtonSize()

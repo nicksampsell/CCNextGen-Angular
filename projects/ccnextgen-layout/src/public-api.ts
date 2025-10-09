@@ -22,4 +22,6 @@ export * from './lib/crud-buttons/crud-buttons.component'
 export * from './lib/dashboard-links/dashboard-links.component'
 export * from './lib/loading/loading.component'
 
+export * from './lib/app-error/app-error.component'
+
 //export * from './lib/CCNextGenLayoutModule'

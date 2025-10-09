@@ -3,12 +3,14 @@ export class SidebarItem {
     title: string | null = null;
     route: string | null = null;
     isHR: boolean = false;
+    showIf: (() => boolean) | boolean | null = null;
 
     constructor(
         titleOrIsHr: string | boolean,
         route?: string,
         icon?: string | null,
-        isHR?: boolean
+        isHR?: boolean,
+        showIf?: (() => boolean) | boolean | null
     ) {
         // If the first parameter is boolean and true, treat this as an HR item
         if (typeof titleOrIsHr === 'boolean' && titleOrIsHr === true) {
@@ -19,6 +21,7 @@ export class SidebarItem {
             this.route = route ?? null;
             this.icon = icon ?? null;
             this.isHR = isHR ?? false;
+            this.showIf = showIf ?? true;
         }
     }
 }

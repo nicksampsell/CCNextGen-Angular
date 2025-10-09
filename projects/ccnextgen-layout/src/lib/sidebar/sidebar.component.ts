@@ -12,7 +12,7 @@ import { CommonModule } from '@angular/common';
     imports: [RouterLink, RouterLinkActive, CommonModule],
     encapsulation: ViewEncapsulation.None
 })
-export class SidebarComponent implements OnInit{
+export class SidebarComponent {
     
     @Input() items: SidebarItem[] = [];
     @Input() beforeMenu?: TemplateRef<any>;
@@ -20,12 +20,4 @@ export class SidebarComponent implements OnInit{
 
     constructor(public config: ConfigService) {}
 
-    ngOnInit(): void {
-        this.log(this.items)
-    }
-
-    log(obj:any)
-    {
-        console.log(obj)
-    }
 }

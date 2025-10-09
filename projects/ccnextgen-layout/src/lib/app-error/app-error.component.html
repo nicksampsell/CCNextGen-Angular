@@ -1,0 +1,61 @@
+<ng-template #errorContent>
+    @if(message === '')
+    {
+        @if(error == '404')
+        {
+            <ccnextgen-header>Page Could Not Be Found</ccnextgen-header>
+            <p>The page you are looking for could not be found.  It may have been deleted, renamed, or the link was incorrect.  Please <a routerLink="/">return to the homepage</a> and try again.</p>
+            <p>If you continue to experience issues, please contact your supervisor or the IT Help Desk by emailing <a href="mailto: helpdesk@chemungcountyny.gov">helpdesk@chemungcountyny.gov</a> or calling extension <a href="tel:21598">#21598</a></p>
+
+        }
+        @else if(error == '403')
+        {
+            <ccnextgen-header>Access Denied</ccnextgen-header>
+            <p>Oops! It looks like you don’t have permission to access this page or section.</p>
+            <p>If you believe this is an error, please contact your supervisor or the IT Help Desk by emailing <a href="mailto: helpdesk@chemungcountyny.gov">helpdesk@chemungcountyny.gov</a> or calling extension <a href="tel:21598">#21598</a></p>
+
+        }
+        @else if(error == 'invalid-user')
+        {
+            <ccnextgen-header>Invalid user</ccnextgen-header>
+            <p>You do not have permission to access this application.</p>
+            <p>If you believe this is an error, please contact your supervisor or the IT Help Desk by emailing <a href="mailto: helpdesk@chemungcountyny.gov">helpdesk@chemungcountyny.gov</a> or calling extension <a href="tel:21598">#21598</a></p>
+        }
+        @else {
+            <ccnextgen-header>Error</ccnextgen-header>
+            <p>There was a problem loading this page.  Please try reloading the page or <a [routerLink]="goToPage">return to the {{goToPageName}}</a> and try again.</p>
+            <p>If you continue to have issues, please contact the IT Help Desk by emailing <a href="mailto: helpdesk@chemungcountyny.gov">helpdesk@chemungcountyny.gov</a> or calling extension <a href="tel:21598">#21598</a></p>
+            @if(errorCode != null)
+            {
+                <code>
+                    Please tell the helpdesk that you received a code <strong>{{errorCode}} </strong> at the url <strong>{{currentUrl}}</strong>
+                </code>
+            }
+        }
+    }
+    @else {
+        <ccnextgen-header>{{title}}</ccnextgen-header>
+        <div>{{message}}</div>
+    }
+</ng-template>
+@if(!!modal || !!fullscreen)
+{
+<div [class.fullscreen]="fullscreen" [class.modal]="modal" class="error-overlay">
+    <div class="card rounded-4 shadow">
+        <div class="card-body">
+            <div class="d-flex justify-content-between align-items-center gap-5">
+                @if(!hideLogo)
+                {
+                <img src="{{config.logoUrl}}" alt="{{config.appTitle}}" />
+                }
+                <div class="d-flex-column">
+                    <ng-container *ngTemplateOutlet="errorContent"></ng-container>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+}
+@else {
+    <ng-container *ngTemplateOutlet="errorContent"></ng-container>
+}

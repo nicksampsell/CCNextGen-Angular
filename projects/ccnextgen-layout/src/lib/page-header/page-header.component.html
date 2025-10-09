@@ -14,7 +14,8 @@
         {
             @for(button of getButtons; track button)
             {
-                <a [class]="['btn',buttonClass(button.color, button.colorAsOutline), 'has-icon']" [routerLink]="button.route">
+                {{button.route}}
+                <a [class]="['btn',buttonClass(button.color, button.colorAsOutline), 'has-icon']" (click)="navigate(button)">
                     @if(!!button.icon)
                     {
                     <i class="material-symbols-outlined">{{button.icon}}</i>

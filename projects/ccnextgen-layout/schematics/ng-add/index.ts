@@ -1,5 +1,6 @@
 import { Rule, Tree, chain, SchematicContext, SchematicsException, } from '@angular-devkit/schematics';
 import { workspaces, virtualFs } from '@angular-devkit/core';
+import * as ts from 'typescript';
 import { AppSchema } from './schema';
 
 function createHost(tree: Tree): workspaces.WorkspaceHost {
@@ -109,36 +110,114 @@ export function updateAngularJson(): Rule {
 }
 
 export function addLayoutConfig(options: AppSchema): Rule {
-return (tree: Tree, context: SchematicContext) => {
+  return (tree: Tree, context: SchematicContext) => {
     const path = options.appConfigPath ?? 'src/app/app.config.ts';
+
+    if (!tree.exists(path)) {
+      context.logger.warn(`Could not find ${path}. Please add the provider manually.`);
+      return tree;
+    }
+
+    const fileContent = tree.read(path)?.toString();
+    if (!fileContent) {
+      context.logger.warn(`Could not read ${path}`);
+      return tree;
+    }
+
+    const printer = ts.createPrinter({ newLine: ts.NewLineKind.LineFeed });
+
+    const layoutProviderText = `provideCCNextGenLayout({ appTitle: '${options.appTitle ?? 'My App'}' })`;
+
+    // Check if the import already exists
+    const hasImport = fileContent.includes('provideCCNextGenLayout');
+    let updatedSource = fileContent;
+
+    if (!hasImport) {
+      updatedSource = `import { provideCCNextGenLayout } from 'ccnextgen-layout';\n${updatedSource}`;
+    }
+
+    const tempSourceFile = ts.createSourceFile(path, updatedSource, ts.ScriptTarget.Latest, true);
+
+    // Visit AST and find providers array
+    const transformer = <T extends ts.SourceFile>(innerContext: ts.TransformationContext) => {
+      return (rootNode: T) => {
+        const visit = (node: ts.Node): ts.Node => {
+          // Find the providers: [...] property assignment
+          if (
+            ts.isPropertyAssignment(node) &&
+            ts.isIdentifier(node.name) &&
+            node.name.text === 'providers' &&
+            ts.isArrayLiteralExpression(node.initializer)
+          ) {
+            const arrayLiteral = node.initializer;
+
+            const alreadyPresent = arrayLiteral.elements.some(el =>
+              el.getText().includes('provideCCNextGenLayout')
+            );
+
+            if (alreadyPresent) {
+              context.logger.info('provideCCNextGenLayout already present in providers.');
+              return node;
+            }
+
+            const newProviderNode = ts.factory.createIdentifier(layoutProviderText);
+            const updatedElements = ts.factory.createNodeArray([...arrayLiteral.elements, newProviderNode]);
+
+            return ts.factory.updatePropertyAssignment(
+              node,
+              node.name,
+              ts.factory.updateArrayLiteralExpression(arrayLiteral, updatedElements)
+            );
+          }
+          return ts.visitEachChild(node, visit, innerContext);
+        };
+        return ts.visitNode(rootNode, visit);
+      };
+    };
+
+    const transformedResult = ts.transform(tempSourceFile, [transformer]);
+    const transformedSourceFile = transformedResult.transformed[0];
+    const newContent = printer.printFile(transformedSourceFile as ts.SourceFile);
+
+    tree.overwrite(path, newContent);
+    context.logger.info(`✅ Added provideCCNextGenLayout to providers in ${path}`);
+    return tree;
+  };
+}
+
+export function updateGlobalStyles(): Rule {
+  return (tree: Tree, context: SchematicContext) => {
+    const path = 'src/styles.css';
+
+    if (!tree.exists(path)) {
+      context.logger.warn(`Could not find ${path}. Skipping global style addition.`);
+      return tree;
+    }
+
     const buffer = tree.read(path);
     if (!buffer) {
-      context.logger.warn(`Could not find ${path}. Please add the provider manually.`);
+      context.logger.warn(`Could not read ${path}.`);
       return tree;
     }
 
     let content = buffer.toString();
 
-    // Add import if missing
-    if (!content.includes("provideCCNextGenLayout")) {
-      content = `import { provideCCNextGenLayout } from 'ccnextgen-layout';\n${content}`;
-    }
+    const styleToAdd = `
+/* You can add global styles to this file, and also import other style files */
+app-root, ccnextgen-layout {
+  display: flex;
+  min-height: 100vh;
+  width: 100%;
+}
+`.trim();
 
-    const providerText = `provideCCNextGenLayout({ appTitle: '${options.appTitle ?? 'My App'}', logoUrl: '${options.logo ?? '/assets/logo.png'}' })`;
-
-    // Check if provider already exists
-    const duplicate = content.includes(providerText);
-    if (!duplicate) {
-      // Append provider inside providers array
-      const updatedContent = content.replace(
-        /providers:\s*\[(.*?)\]/s,
-        (_, existing) => `providers: [${existing.trim()}, ${providerText}]`
-      );
-
-      tree.overwrite(path, updatedContent);
-      context.logger.info(`Added CCNextGenLayoutConfig with title: ${options.appTitle} and logo: ${options.logo}`);
+    // Avoid adding duplicate styles
+    if (!content.includes('ccnextgen-layout')) {
+      content = `${styleToAdd}\n\n${content}`;
+      tree.overwrite(path, content);
+      context.logger.info(`Updated ${path} with global layout styles.`);
     } else {
-      context.logger.info(`CCNextGenLayoutConfig provider already exists in ${path}`);
+      context.logger.info(`${path} already contains layout styles.`);
     }
 
     return tree;
@@ -148,10 +227,12 @@ return (tree: Tree, context: SchematicContext) => {
 
 
 
+
 export function ngAdd(options: AppSchema): Rule {
   return chain([
     updateAngularJson(),
-    addLayoutConfig(options)
+    addLayoutConfig(options),
+    updateGlobalStyles()
     // ...other rules if needed
   ]);
 }
