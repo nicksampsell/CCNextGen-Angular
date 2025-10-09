@@ -3,7 +3,7 @@ import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
-import { CCNEXTGEN_LAYOUT_CONFIG } from 'ccnextgen-layout'
+import { provideCCNextGenLayout } from 'ccnextgen-layout'
 
 export const appConfig: ApplicationConfig = {
   providers: [
@@ -11,11 +11,8 @@ export const appConfig: ApplicationConfig = {
     provideZoneChangeDetection({ eventCoalescing: true }),
     provideRouter(routes),
     provideHttpClient(),
-    {
-      provide: CCNEXTGEN_LAYOUT_CONFIG,
-      useValue: {
-        appTitle: 'Surplus Management'
-      }
-    }
+    provideCCNextGenLayout({
+      appTitle: 'Demo App',
+    })
   ]
 };

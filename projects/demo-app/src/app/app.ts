@@ -1,7 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { CCNextGenBaseLayout, LoadingComponent, SidebarComponent } from 'ccnextgen-layout'
+import { CCNextGenBaseLayout, LoadingComponent, AppErrorComponent } from 'ccnextgen-layout'
 
 
 @Component({
@@ -40,6 +40,11 @@ export class App {
       title: 'Editor',
       route: '/edit',
       icon: 'edit',
+    },
+    {
+      title: 'Deeply Nested',
+      route: '/deeply/nested',
+      icon: 'chevron_right',
     }
   ]
 }

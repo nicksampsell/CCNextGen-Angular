@@ -1,6 +1,7 @@
-<ccnextgen-loading *ngIf="loading" [modal]="true" [fullscreen]="false"></ccnextgen-loading>
+@if(loading) { <ccnextgen-loading [modal]="true" [fullscreen]="false"></ccnextgen-loading> }
+
 <ccnextgen-layout [sidebarItems]="buttons" [sidebarBeforeMenu]="beforeMenu">
-  </ccnextgen-layout>
+</ccnextgen-layout>
 
   <ng-template #beforeMenu>
   <hr />
@@ -9,3 +10,5 @@
     <span class="ms-2" style="font-size: 0.9rem">Position</span>
   </div>
   </ng-template>
+
+

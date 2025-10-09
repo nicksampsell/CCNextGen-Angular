@@ -1,16 +1,16 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit, signal } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
-import { PageHeader, DashboardLinks, LoadingComponent, AppErrorComponent } from 'ccnextgen-layout'
+import { PageHeader, DashboardLinks, LoadingComponent, AppErrorComponent, CrudButtons } from 'ccnextgen-layout'
 
 
 @Component({
-  selector: 'app-dashboard',
-  imports: [PageHeader, DashboardLinks, CommonModule],
-  templateUrl: './dashboard.component.html',
+  selector: 'app-deep-nested',
+  imports: [PageHeader, DashboardLinks, CommonModule, CrudButtons],
+  templateUrl: './deep-nested.component.html',
   standalone: true
 })
-export class DashboardPage{
+export class DeepNestedPage{
   protected readonly title = signal('demo-app');
 
 

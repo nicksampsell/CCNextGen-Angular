@@ -1,6 +1,6 @@
 {
   "name": "ccnextgen-layout",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "scripts": {
     "build": "ng build ccnextgen-layout && npm run build:schematics",
     "build:schematics": "tsc -p tsconfig.schematics.json",
