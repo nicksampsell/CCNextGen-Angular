@@ -100,3 +100,19 @@ table.table table.table td, table.table table.table th {
   'GRAD' 0,
   'opsz' 24
 }
+.collapse {
+    width: 4.5rem;
+}
+.collapse .nav-link span {
+    display: none;
+}
+.collapse .nav-item .material-symbols-outlined {
+    display: block;
+    padding: 0 !important;
+    margin-right: 0;
+
+}
+.collapse .nav-link div {
+    gap: 0 !important;
+    justify-content: center !important;
+}

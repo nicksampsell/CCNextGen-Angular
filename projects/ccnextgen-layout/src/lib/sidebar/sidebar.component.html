@@ -1,58 +1,66 @@
-<div class="d-flex flex-column text-center align-items-center w-100">
-    <ng-content select="entire">
-        <a href="/" class="">
-            <img [src]="config.logoUrl" [alt]="config.appTitle" class="img-fluid" />
-        </a>
-        <h1 class="h3 text-center text-white text-decoration-none">{{config.appTitle}}</h1>
-        
-        <ng-content select="menu-section">
+<div class="d-flex flex-column text-center align-items-center w-100" [class.overflow-hidden]="!isCollapsed" id="sidebar-component">
+    <div class="grow-1">
+        <ng-content select="entire">
+            <a href="/" class="">
+                <img [src]="config.logoUrl" [alt]="config.appTitle" class="img-fluid" />
+            </a>
+            @if(!isCollapsed)
+            {
+                <h1 class="h3 text-center text-white text-decoration-none">{{config.appTitle}}</h1>
+            }
+            
+            <ng-content select="menu-section">
 
-        @if(beforeMenu)
-        {
-            <div class="w-100 px-2">
-                <ng-container [ngTemplateOutlet]="beforeMenu"></ng-container>
-            </div>
-        }
+            @if(beforeMenu && !isCollapsed)
+            {
+                <div class="w-100 px-2">
+                    <ng-container [ngTemplateOutlet]="beforeMenu"></ng-container>
+                </div>
+            }
 
-        @if(!!items && items.length > 0)
-        {
-            <div class="w-100 px-2">
-                <hr />
-                <ul class="nav nav-pills flex-column mb-auto flex-grow-1 w-100">
-                    @for(item of items; track item)
-                    {
-                        
-                        @if(item.isHR)
+            @if(!!items && items.length > 0)
+            {
+                <div class="w-100 px-2">
+                    <hr />
+                    <ul class="nav nav-pills flex-column mb-auto flex-grow-1 w-100">
+                        @for(item of items; track item)
                         {
-                            <li><hr /></li>
                             
+                            @if(item.isHR)
+                            {
+                                <li><hr /></li>
+                                
+                            }
+                            @else {
+                                @if(item.showIf) {
+                                    <li class="mb-1">
+                                        <a [routerLink]="[item.route]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link text-white cc-tooltip" [class.cc-tooltip]="isCollapsed" [attr.data-title]="isCollapsed ? item.title : null">
+                                            <div class="d-flex justify-content-start align-items-center text-start" [class.g-2]="!isCollapsed" data-bs-toggle="tooltip" [title]="item.title">
+                                                @if(!!item.icon)
+                                                {
+                                                    <i class="material-symbols-outlined" [class.me-2]="!isCollapsed">{{item.icon}}</i>
+                                                }
+                                                @if(!isCollapsed)
+                                                {
+                                                    <span class="text-nowrap flex-grow-1 text-truncate">{{getShortTitle(item.title)}}</span>
+                                                }
+                                            </div>
+                                        </a>
+                                    </li> 
+                                } 
+                            }
                         }
-                        @else {
-                            @if(item.showIf) {
-                                <li class="mb-1">
-                                    <a [routerLink]="[item.route]" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" class="nav-link text-white">
-                                        <div class="d-flex justify-content-start align-items-center g-2">
-                                            @if(!!item.icon)
-                                            {
-                                                <i class="material-symbols-outlined me-2">{{item.icon}}</i>
-                                            }
-                                            <span class="text-nowrap flex-grow-1 text-start">{{item.title}}</span>
-                                        </div>
-                                    </a>
-                                </li> 
-                            } 
-                        }
-                    }
-                </ul>
-            </div>
-        }
+                    </ul>
+                </div>
+            }
 
-        <ng-content></ng-content>
-        @if(beforeMenu)
-        {
-        <ng-container [ngTemplateOutlet]="afterMenu"></ng-container>
-        }
+            <ng-content></ng-content>
+            @if(afterMenu && !isCollapsed)
+            {
+            <ng-container [ngTemplateOutlet]="afterMenu"></ng-container>
+            }
+            </ng-content>
         </ng-content>
-    </ng-content>
+    </div>
 
 </div>

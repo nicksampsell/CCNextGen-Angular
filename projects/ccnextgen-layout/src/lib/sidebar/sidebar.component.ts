@@ -3,6 +3,7 @@ import { ConfigService } from '../config/config.service';
 import { SidebarItem } from './sidebar.model';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { CcTippyDirective } from "../helpers/tippy.directive";
 
 @Component({
     selector: 'ccnextgen-sidebar', 
@@ -20,4 +21,13 @@ export class SidebarComponent {
 
     constructor(public config: ConfigService) {}
 
+    get isCollapsed(): boolean {
+        return localStorage.getItem('sidebar-collapsed') === 'true';
+    }
+
+    getShortTitle(title: string|null) {
+        if (!title) return '';
+        const max = 30;
+        return title.length > max ? title.slice(0, max) + '…' : title;
+    }
 }

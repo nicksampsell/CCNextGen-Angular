@@ -22,7 +22,8 @@
               {
                 "glob": "**/*",
                 "input": "projects/demo-app/public"
-              }, {
+              },
+              {
                 "glob": "**/*",
                 "input": "projects/ccnextgen-layout/src/assets",
                 "output": "/assets/ccnextgen-layout"
@@ -87,7 +88,8 @@
               {
                 "glob": "**/*",
                 "input": "projects/demo-app/public"
-              }, {
+              },
+              {
                 "glob": "**/*",
                 "input": "projects/ccnextgen-layout/src/assets",
                 "output": "/assets/ccnextgen-layout"

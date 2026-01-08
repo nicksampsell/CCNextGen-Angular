@@ -1,9 +1,10 @@
-import { Component, Input, OnChanges, signal, TemplateRef, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, Input, OnChanges, signal, TemplateRef, ViewEncapsulation } from '@angular/core';
 import { SidebarComponent } from '../sidebar/sidebar.component';
 import { TopbarComponent } from '../topbar/topbar.component';
 import { CommonModule } from '@angular/common';
 import { SidebarItem } from '../sidebar/sidebar.model';
 import { RouterOutlet } from '@angular/router';
+
 
 
 @Component({
@@ -58,5 +59,15 @@ export class CCNextGenBaseLayout implements OnChanges{
         this.hasCustomSidebar.set(!!this.sidebarTemplate);
         this.hasCustomTopbar.set(!!this.topbarTemplate);
     }
+
+    toggleSidebar() {
+        let isCollapsed = !this.isCollapsed;
+        localStorage.setItem('sidebar-collapsed', isCollapsed.toString());
+    }
+
+    get isCollapsed(): boolean {
+        return localStorage.getItem('sidebar-collapsed') === 'true';
+    }
+
 
 }

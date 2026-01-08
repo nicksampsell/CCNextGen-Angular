@@ -10,3 +10,82 @@ hr {
     box-sizing: border-box;
     width: 100%;
 }
+
+.cc-tooltip {
+  position: relative;
+  outline-color: rgba(255,255,255,0.5);
+}
+.cc-tooltip:hover, .cc-tooltip:active, .cc-tooltip:focus {
+    background: rgba(255,255,255,0.1);      
+    outline: 1px solid rgba(255,255,255,0.5) ; 
+    box-shadow: none;           
+}
+
+
+/* Tooltip bubble */
+.cc-tooltip::after {
+  content: attr(data-title);
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(4px);
+  margin-left: 16px;
+  transition: opacity 120ms ease, transform 120ms ease;
+
+  background: #212529;
+  color: white;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 1.1rem;
+  white-space: nowrap;
+
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 120ms ease,
+    transform 120ms ease;
+
+  z-index: 1000;
+}
+
+/* Tooltip arrow (larger left caret) */
+.cc-tooltip::before {
+  content: '';
+  position: absolute;
+  left: 100%;
+  top: 50%;
+  transform: translateY(-50%) translateX(4px);
+
+  border-width: 8px;
+  border-style: solid;
+  border-color: transparent #212529 transparent transparent;
+
+  opacity: 0;
+  pointer-events: none;
+  transition:
+    opacity 120ms ease,
+    transform 120ms ease;
+
+  z-index: 999;
+}
+
+/* Show on hover AND keyboard focus */
+.cc-tooltip:hover::after,
+.cc-tooltip:hover::before,
+.cc-tooltip:focus-visible::after,
+.cc-tooltip:focus-visible::before {
+  opacity: 1;
+  /*transform: translateY(-50%) translateX(0);*/
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cc-tooltip::before,
+  .cc-tooltip::after {
+    transition: opacity 80ms linear;
+    transform: translateY(-50%);
+  }
+}
+.nav-link .text-truncate {
+  max-width: calc(100% - 2rem); /* leave room for icon */
+  display: inline-block; /* required for text-truncate to work */
+}

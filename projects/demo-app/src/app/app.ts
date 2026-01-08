@@ -45,6 +45,106 @@ export class App {
       title: 'Deeply Nested',
       route: '/deeply/nested',
       icon: 'chevron_right',
+    },
+    {
+      title: 'Editorasdfasdfasdfasdf asdfasd fasdf asdfasdfasdfasdfasfasd f asdfasdf asd fasdfasdfasdfasdfasdfasdfasdfasd fasdf dfasasdf',
+      route: '/edit',
+      icon: 'edit',
+    },
+    {
+      title: 'Editor',
+      route: '/edit',
+      icon: 'edit',
+    },
+    {
+      title: 'Editor',
+      route: '/edit',
+      icon: 'edit',
+    },
+    {
+      title: 'Editor',
+      route: '/edit',
+      icon: 'edit',
+    },
+    {
+      title: 'Editor',
+      route: '/edit',
+      icon: 'edit',
+    },
+    {
+      title: 'Editor',
+      route: '/edit',
+      icon: 'edit',
+    },
+    {
+      title: 'Editor',
+      route: '/edit',
+      icon: 'edit',
+    },
+    {
+      title: 'Editor',
+      route: '/edit',
+      icon: 'edit',
+    },
+    {
+      title: 'Editor',
+      route: '/edit',
+      icon: 'edit',
+    },
+    {
+      title: 'Editor',
+      route: '/edit',
+      icon: 'edit',
+    },
+    {
+      title: 'Editor',
+      route: '/edit',
+      icon: 'edit',
+    },
+    {
+      title: 'Editor',
+      route: '/edit',
+      icon: 'edit',
+    },
+    {
+      title: 'Editor',
+      route: '/edit',
+      icon: 'edit',
+    },
+    {
+      title: 'Editor',
+      route: '/edit',
+      icon: 'edit',
+    },
+    {
+      title: 'Editor',
+      route: '/edit',
+      icon: 'edit',
+    },
+    {
+      title: 'Editor',
+      route: '/edit',
+      icon: 'edit',
+    },
+    {
+      title: 'Editor',
+      route: '/edit',
+      icon: 'edit',
+    },
+    {
+      title: 'Editor',
+      route: '/edit',
+      icon: 'edit',
+    },
+    {
+      title: 'Editor',
+      route: '/edit',
+      icon: 'edit',
+    },
+    {
+      title: 'Editor',
+      route: '/edit',
+      icon: 'edit',
     }
   ]
 }

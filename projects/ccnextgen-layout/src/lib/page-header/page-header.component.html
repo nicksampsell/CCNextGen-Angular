@@ -14,7 +14,7 @@
         {
             @for(button of getButtons; track button)
             {
-                {{button.route}}
+
                 <a [class]="['btn',buttonClass(button.color, button.colorAsOutline), 'has-icon']" (click)="navigate(button)">
                     @if(!!button.icon)
                     {

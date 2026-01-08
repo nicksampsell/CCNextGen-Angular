@@ -1,5 +1,6 @@
 import { ApplicationConfig, provideBrowserGlobalErrorListeners, provideZoneChangeDetection } from '@angular/core';
 import { provideRouter } from '@angular/router';
+import { provideTippyLoader, provideTippyConfig, tooltipVariation, popperVariation } from '@ngneat/helipopper/config';
 
 import { routes } from './app.routes';
 import { provideHttpClient } from '@angular/common/http';
@@ -13,6 +14,6 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideCCNextGenLayout({
       appTitle: 'Demo App',
-    })
+    }),
   ]
 };
