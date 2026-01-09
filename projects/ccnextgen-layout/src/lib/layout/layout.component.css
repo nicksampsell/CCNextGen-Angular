@@ -116,3 +116,6 @@ table.table table.table td, table.table table.table th {
     gap: 0 !important;
     justify-content: center !important;
 }
+.inner-sidebar {
+    min-height: calc(100vh - 80px);
+}

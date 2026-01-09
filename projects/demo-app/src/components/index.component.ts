@@ -33,4 +33,8 @@ export class IndexPage {
   {
     alert(`Details action clicked for item with id: ${id}`);
   }
+
+  createRange(number:number) {
+    return new Array(number).fill(0).map((n, index) => index + 1);
+  }
 }

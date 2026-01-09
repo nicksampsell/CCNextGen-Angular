@@ -19,6 +19,8 @@
             </tr>
         </thead>
         <tbody>
+            @for(i of createRange(100); track i)
+            {
             <tr>
                 <td>1</td>
                 <td>Item 1</td>
@@ -27,5 +29,6 @@
                     <ccnextgen-crud-buttons [itemId]="1"></ccnextgen-crud-buttons>
                 </td>
             </tr>
+            }
         </tbody>
     </table>

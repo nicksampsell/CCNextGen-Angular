@@ -4,7 +4,7 @@
     {
         <ng-content #sidebar> 
             <div class="d-flex flex-column flex-shrink-0 p-2 text-bg-dark col-2" style="z-index: 10;" id="sidebar" [class.collapse]="isCollapsed">
-                <div class="flex-grow-1">
+                <div class="inner-sidebar">
                 @if (hasCustomSidebar())
                 {
                         <ng-container *ngTemplateOutlet="sidebarTemplate">
@@ -18,7 +18,8 @@
                         </ccnextgen-sidebar>
                 }
                 </div>
-                <div [class]="{'text-center': isCollapsed,'text-end': !isCollapsed}">
+                <div [class]="{'text-center': isCollapsed,'text-end': !isCollapsed,'collapse-button':true}">
+                    <hr />
                     <button type="button" class="text-white border-0 outline-0 bg-transparent" (click)="toggleSidebar()">
                         @if(isCollapsed)
                         {
