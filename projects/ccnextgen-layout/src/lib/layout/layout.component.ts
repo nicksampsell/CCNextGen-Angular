@@ -4,6 +4,8 @@ import { TopbarComponent } from '../topbar/topbar.component';
 import { CommonModule } from '@angular/common';
 import { SidebarItem } from '../sidebar/sidebar.model';
 import { RouterOutlet } from '@angular/router';
+import { CCNextGenLayoutModule } from "../CCNextGenLayoutModule";
+import { ThemeSwitcher } from '../theme-switcher/theme-switcher.component';
 
 
 
@@ -12,7 +14,7 @@ import { RouterOutlet } from '@angular/router';
     templateUrl: './layout.component.html',
     styleUrl: './layout.component.css',
     standalone: true,
-    imports: [SidebarComponent, CommonModule, RouterOutlet],
+    imports: [SidebarComponent, CommonModule, RouterOutlet, CCNextGenLayoutModule, ThemeSwitcher],
     encapsulation: ViewEncapsulation.None
 })
 export class CCNextGenBaseLayout implements OnChanges{

@@ -2,11 +2,13 @@ import { CommonModule } from '@angular/common';
 import { Component, signal } from '@angular/core';
 import { RouterLink, RouterOutlet } from '@angular/router';
 import { CCNextGenBaseLayout, LoadingComponent, AppErrorComponent } from 'ccnextgen-layout'
+import { CCNextGenLayoutModule } from "../../../ccnextgen-layout/src/lib/CCNextGenLayoutModule";
+import { ThemeSwitcher } from '../../../ccnextgen-layout/src/lib/theme-switcher/theme-switcher.component';
 
 
 @Component({
   selector: 'app-root',
-  imports: [CCNextGenBaseLayout, LoadingComponent, CommonModule],
+  imports: [CCNextGenBaseLayout, LoadingComponent, CommonModule, CCNextGenLayoutModule, ThemeSwitcher],
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

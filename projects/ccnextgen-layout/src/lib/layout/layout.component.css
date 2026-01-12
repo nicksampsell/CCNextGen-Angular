@@ -119,3 +119,11 @@ table.table table.table td, table.table table.table th {
 .inner-sidebar {
     min-height: calc(100vh - 80px);
 }
+[data-bs-theme="dark"] #sidebar {
+    background-color: rgb(24, 27, 31) !important;
+}
+
+[data-bs-theme="dark"] #sidebar .nav-link.active {
+    background-color: #B89B2F !important;
+    color: black !important;
+}

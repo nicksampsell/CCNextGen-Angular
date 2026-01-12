@@ -402,6 +402,182 @@ export class AppComponent {}
 
 ---
 
+# Form Error Component
+
+Displays validation error messages for Angular reactive form controls with support for custom messages and automatic handling of common validators.
+
+---
+
+## TypeScript
+
+```ts
+import { FormError } from './form-error.component';
+
+@Component({
+  imports: [FormError]
+})
+export class AppComponent {}
+```
+
+> This component is **standalone** and can be imported directly without a module.
+
+---
+
+## HTML Usage
+
+```html
+<input
+  type="email"
+  class="form-control"
+  [formControl]="emailControl">
+
+<form-error
+  [control]="emailControl">
+</form-error>
+```
+
+---
+
+## Inputs
+
+| Option       | Type                        | Required | Default                      | Description                                  |
+| ------------ | --------------------------- | -------- | ---------------------------- | -------------------------------------------- |
+| control      | `AbstractControl \| null`   | Yes      | —                            | Form control to watch for validation errors  |
+| customErrors | `{ [key: string]: string }` | No       | `{}`                         | Custom error messages by validator key       |
+| wrapperTag   | `string \| null`            | No       | `null`                       | Optional HTML tag wrapping the error message |
+| wrapperClass | `string`                    | No       | `'invalid-feedback d-block'` | CSS classes applied to the error container   |
+
+---
+
+## Default Validation Messages
+
+The component automatically provides fallback messages for common Angular validators:
+
+| Validator   | Default Message                   |
+| ----------- | --------------------------------- |
+| `required`  | `This field is required.`         |
+| `minlength` | `Minimum length is X characters.` |
+| `maxlength` | `Maximum length is X characters.` |
+| `email`     | `Invalid email format.`           |
+| `pattern`   | `Invalid format.`                 |
+
+Messages are shown **only when the control is invalid and has been touched or dirtied**.
+
+---
+
+## Custom Error Messages Example
+
+```html
+<form-error
+  [control]="passwordControl"
+  [customErrors]="{
+    required: 'Password is mandatory',
+    minlength: 'Password must be at least 8 characters long'
+  }">
+</form-error>
+```
+
+> Custom messages **override default messages** when provided.
+
+---
+
+## Wrapper Tag Example
+
+```html
+<form-error
+  [control]="usernameControl"
+  wrapperTag="div"
+  wrapperClass="text-danger mt-1">
+</form-error>
+```
+
+---
+
+# Theme Service
+
+Provides application-wide Bootstrap theme switching (`light`, `dark`, or `auto`) using `data-bs-theme` and persists the preference in `localStorage`.
+
+---
+
+## Theme Type
+
+```ts
+export type Theme = 'light' | 'dark' | 'auto';
+```
+
+---
+
+## Usage
+
+### Injecting the Service
+
+```ts
+import { ThemeService } from './theme.service';
+
+@Component({})
+export class HeaderComponent {
+  constructor(public themeService: ThemeService) {}
+}
+```
+
+---
+
+### Switching Themes
+
+```ts
+this.themeService.setTheme('dark');
+this.themeService.setTheme('light');
+this.themeService.setTheme('auto');
+```
+
+---
+
+## Behavior
+
+* Automatically applies the stored theme on app startup
+* Listens for OS-level color scheme changes when theme is set to `auto`
+* Uses Bootstrap’s `data-bs-theme` attribute on the `<html>` element
+* Stores user preference in `localStorage` under the key `theme`
+
+---
+
+## Methods
+
+| Method                  | Return Type     | Description                                       |
+| ----------------------- | --------------- | ------------------------------------------------- |
+| `getStoredTheme()`      | `Theme \| null` | Returns the theme stored in `localStorage`        |
+| `setStoredTheme(theme)` | `void`          | Saves theme preference                            |
+| `getPreferredTheme()`   | `Theme`         | Determines the effective theme (stored or system) |
+| `applyTheme(theme)`     | `void`          | Applies theme to the document                     |
+| `setTheme(theme)`       | `void`          | Stores and applies theme                          |
+
+---
+
+## Example: Theme Toggle Buttons
+
+```html
+<button class="btn btn-light" (click)="themeService.setTheme('light')">
+  Light
+</button>
+
+<button class="btn btn-dark" (click)="themeService.setTheme('dark')">
+  Dark
+</button>
+
+<button class="btn btn-secondary" (click)="themeService.setTheme('auto')">
+  Auto
+</button>
+```
+
+
+---
+
+## Notes
+
+* Requires **Bootstrap 5.3+** for `data-bs-theme` support
+* Works seamlessly with system dark mode preferences
+* No additional CSS or configuration required
+
 # Permitted Color Value Strings
 
 | Color     | Description                   |
@@ -412,3 +588,6 @@ export class AppComponent {}
 | danger    | Red (`btn-danger`)            |
 | warning   | Yellow/Orange (`btn-warning`) |
 | secondary | Gray (`btn-secondary`)        |
+
+Below is **documentation written in the same style and structure** as your existing `ccnextgen-layout` docs, ready to be appended to the same documentation file.
+

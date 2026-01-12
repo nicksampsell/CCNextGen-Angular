@@ -1,0 +1,20 @@
+<button
+  id="bd-theme"
+  type="button"
+  class="btn btn-link text-white  pb-0 mb-0 b-0"
+  [class.text-white]="inSidebar"
+  [class.text-body]="!inSidebar"
+  aria-label="Toggle theme"
+  (click)="toggleTheme()"
+>
+@if(activeTheme === 'light')
+{
+    <span class="visually-hidden">Switch to Dark Mode</span>
+    <span class="material-symbols-outlined pb-0 mb-0">light_mode</span>
+}
+@else
+{
+    <span class="visually-hidden">Switch to Light Mode</span>
+    <span class="material-symbols-outlined pb-0 mb-0">dark_mode</span>
+}
+</button>

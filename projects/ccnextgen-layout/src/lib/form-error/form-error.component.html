@@ -1,0 +1,13 @@
+@if(errorMessage) {
+    @switch(wrapperTag) {
+        @case('div') {
+            <div [class]="wrapperClass">{{errorMessage}}</div>
+        }
+        @case('span') {
+            <span [class]="wrapperClass">{{errorMessage}}</span>
+        }
+        @default {
+            <div [class]="wrapperClass">{{errorMessage}}</div>
+        }
+    }
+}

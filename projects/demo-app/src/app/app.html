@@ -1,6 +1,6 @@
 @if(loading) { <ccnextgen-loading [modal]="true" [fullscreen]="false"></ccnextgen-loading> }
 
-<ccnextgen-layout [sidebarItems]="buttons" [sidebarBeforeMenu]="beforeMenu">
+<ccnextgen-layout [sidebarItems]="buttons" [sidebarBeforeMenu]="beforeMenu" [topbarTemplate]="topbar">
 </ccnextgen-layout>
 
   <ng-template #beforeMenu>
@@ -11,4 +11,7 @@
   </div>
   </ng-template>
 
+  <ng-template #topbar>
+    <div class="d-flex justify-content-end align-items-center"><theme-switcher></theme-switcher></div>
+  </ng-template>
 
