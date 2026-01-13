@@ -139,41 +139,53 @@ export function addLayoutConfig(options: AppSchema): Rule {
     const tempSourceFile = ts.createSourceFile(path, updatedSource, ts.ScriptTarget.Latest, true);
 
     // Visit AST and find providers array
-    const transformer = <T extends ts.SourceFile>(innerContext: ts.TransformationContext) => {
-      return (rootNode: T) => {
-        const visit = (node: ts.Node): ts.Node => {
-          // Find the providers: [...] property assignment
-          if (
-            ts.isPropertyAssignment(node) &&
-            ts.isIdentifier(node.name) &&
-            node.name.text === 'providers' &&
-            ts.isArrayLiteralExpression(node.initializer)
-          ) {
-            const arrayLiteral = node.initializer;
+const transformer: ts.TransformerFactory<ts.SourceFile> =
+  (innerContext: ts.TransformationContext) => {
 
-            const alreadyPresent = arrayLiteral.elements.some(el =>
-              el.getText().includes('provideCCNextGenLayout')
+    return (rootNode: ts.SourceFile): ts.SourceFile => {
+
+      const visit = (node: ts.Node): ts.Node => {
+
+        if (
+          ts.isPropertyAssignment(node) &&
+          ts.isIdentifier(node.name) &&
+          node.name.text === 'providers' &&
+          ts.isArrayLiteralExpression(node.initializer)
+        ) {
+          const arrayLiteral = node.initializer;
+
+          const alreadyPresent = arrayLiteral.elements.some(el =>
+            el.getText().includes('provideCCNextGenLayout')
+          );
+
+          if (alreadyPresent) {
+            context.logger.info(
+              'provideCCNextGenLayout already present in providers.'
             );
-
-            if (alreadyPresent) {
-              context.logger.info('provideCCNextGenLayout already present in providers.');
-              return node;
-            }
-
-            const newProviderNode = ts.factory.createIdentifier(layoutProviderText);
-            const updatedElements = ts.factory.createNodeArray([...arrayLiteral.elements, newProviderNode]);
-
-            return ts.factory.updatePropertyAssignment(
-              node,
-              node.name,
-              ts.factory.updateArrayLiteralExpression(arrayLiteral, updatedElements)
-            );
+            return node;
           }
-          return ts.visitEachChild(node, visit, innerContext);
-        };
-        return ts.visitNode(rootNode, visit);
+
+          const newProviderNode = ts.factory.createIdentifier(layoutProviderText);
+
+          return ts.factory.updatePropertyAssignment(
+            node,
+            node.name,
+            ts.factory.updateArrayLiteralExpression(
+              arrayLiteral,
+              ts.factory.createNodeArray([
+                ...arrayLiteral.elements,
+                newProviderNode
+              ])
+            )
+          );
+        }
+
+        return ts.visitEachChild(node, visit, innerContext);
       };
+
+      return ts.visitNode(rootNode, visit) as ts.SourceFile;
     };
+  };
 
     const transformedResult = ts.transform(tempSourceFile, [transformer]);
     const transformedSourceFile = transformedResult.transformed[0];
@@ -236,3 +248,5 @@ export function ngAdd(options: AppSchema): Rule {
     // ...other rules if needed
   ]);
 }
+
+export default ngAdd;

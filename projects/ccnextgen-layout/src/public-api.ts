@@ -23,5 +23,7 @@ export * from './lib/dashboard-links/dashboard-links.component'
 export * from './lib/loading/loading.component'
 
 export * from './lib/app-error/app-error.component'
+export * from './lib/form-error/form-error.component'
+export * from './lib/theme-switcher/theme-switcher.component'
 
 //export * from './lib/CCNextGenLayoutModule'
