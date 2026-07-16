@@ -1,0 +1,358 @@
+<div class="row row-gap-3 mb-5">
+  <div class="col-12 col-md-8">
+    <div class="row row-gap-3">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="display-7 mb-0">Asset Details</h3>
+          </div>
+          <div class="card-body">
+            <div class="row row-gap-3">
+              <div class="col-12 col-md-4">
+                <label for="ItemType" class="form-label">Asset Type</label>
+                <select id="ItemType" formcontrolname="ItemType" class="form-select ng-untouched ng-pristine ng-valid">
+                  <option value="2">Vehicle</option>
+                  <option value="1">IT Equipment</option>
+                  <option value="0">General Asset</option>
+                </select>
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+              <div class="col-12 col-md-8">
+                <label for="DepartmentId" class="form-label">Department</label>
+                
+                <form-error>
+                  <!--container-->
+                </form-error>
+                <!--container-->
+              </div>
+              <div class="col-12">
+                <label for="Description" class="form-label">Asset Description</label>
+                <input type="text" id="Description" formcontrolname="Description" class="form-control ng-untouched ng-pristine ng-invalid">
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+              <div class="col-12 col-md-4">
+                <label for="Year" class="form-label">Year</label>
+                <input type="number" id="Year" formcontrolname="Year" class="form-control ng-untouched ng-pristine ng-valid">
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+              <div class="col-12 col-md-4">
+                <label for="Make" class="form-label">Make</label>
+                <input type="text" id="Make" formcontrolname="Make" class="form-control ng-untouched ng-pristine ng-valid">
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+              <div class="col-12 col-md-4">
+                <label for="ModelNumber" class="form-label">Model Number</label>
+                <input type="text" id="ModelNumber" formcontrolname="ModelNumber" class="form-control ng-untouched ng-pristine ng-valid">
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+              <div class="col-12 col-md-7">
+                <label for="SerialNumber" class="form-label">Serial Number</label>
+                <input type="text" id="SerialNumber" formcontrolname="SerialNumber" class="form-control ng-untouched ng-pristine ng-valid">
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-4">
+    <div class="row row-gap-3">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="display-7 mb-0">Surplus Information</h3>
+          </div>
+          <div class="card-body">
+            <div class="row row-gap-3">
+              <div class="col-12">
+                <label for="SurplusTagNumber" class="form-label">Surplus Tag Number</label>
+                <input type="text" id="SurplusTagNumber" formcontrolname="SurplusTagNumber" class="form-control ng-untouched ng-pristine ng-valid">
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+              <div class="col-12">
+                <label for="AgendaItemNumber" class="form-label">Agenda Item Number</label>
+                <input type="text" id="AgendaItemNumber" formcontrolname="AgendaItemNumber" class="form-control ng-untouched ng-pristine ng-valid">
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+              <div class="col-12">
+                <label for="CurrentLocation" class="form-label">Current Location</label>
+                <input type="text" id="CurrentLocation" formcontrolname="CurrentLocation" class="form-control ng-untouched ng-pristine ng-valid">
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+              <div class="col-12">
+                <label for="DisposalRecommendationId" class="form-label">Disposal Recommendation</label>
+                <select id="DisposalRecommendationId" formcontrolname="DisposalRecommendationId" class="form-select ng-untouched ng-pristine ng-valid">
+                  <option value="0">None</option>
+                  <option value="1">Unfit for Use</option>
+                  <option value="2">Recyle (Electronics)</option>
+                  <option value="3">Scrap</option>
+                  <option value="4">Sell</option>
+                  <option value="5">Sell</option>
+                  <option value="6">Sold Previously</option>
+                  <option value="7">Trade In</option>
+                  <option value="8">Dept. Transfer</option>
+                  <option value="9">Govt. Transfer</option>
+                </select>
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input type="checkbox" id="IsComputerEquipment" formcontrolname="IsComputerEquipment" class="form-check-input ng-untouched ng-pristine ng-valid">
+                  <label for="IsComputerEquipment" class="form-check-label"> Computer Equipment </label>
+                  <form-error>
+                    <!--container-->
+                  </form-error>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input type="checkbox" id="DeliveredToAuctionBuilding" formcontrolname="DeliveredToAuctionBuilding" class="form-check-input ng-untouched ng-pristine ng-valid">
+                  <label for="DeliveredToAuctionBuilding" class="form-check-label"> Delivered to Auction Building </label>
+                  <form-error>
+                    <!--container-->
+                  </form-error>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="display-7 mb-0">Disposal Information</h3>
+          </div>
+          <div class="card-body">
+            <div class="row row-gap-3">
+              <div class="col-12">
+                <label for="DisposalMethod" class="form-label">Disposal Method</label>
+                <select id="DisposalMethod" formcontrolname="DisposalMethod" class="form-select ng-untouched ng-pristine ng-valid">
+                  <option value="0">None</option>
+                  <option value="1">Sold</option>
+                  <option value="2">Transferred</option>
+                  <option value="3">Solid Waste Disposal</option>
+                  <option value="4">Scrap</option>
+                  <option value="5">Trade In</option>
+                  <option value="6">Recycled</option>
+                  <option value="7">Auction</option>
+                </select>
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+              <!--container-->
+              <!--container-->
+              <!--container-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 text-end">
+    <button type="submit" class="btn btn-primary" disabled="">Create</button>
+  </div>
+</div>
+<div class="row row-gap-3 mb-5">
+  <div class="col-12 col-md-8">
+    <div class="row row-gap-3">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="display-7 mb-0">Asset Details</h3>
+          </div>
+          <div class="card-body">
+            <div class="row row-gap-3">
+              <div class="col-12 col-md-4">
+                <label for="ItemType" class="form-label">Asset Type</label>
+                <select id="ItemType" formcontrolname="ItemType" class="form-select ng-untouched ng-pristine ng-valid">
+                  <option value="2">Vehicle</option>
+                  <option value="1">IT Equipment</option>
+                  <option value="0">General Asset</option>
+                </select>
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+              <div class="col-12 col-md-8">
+                <label for="DepartmentId" class="form-label">Department</label>
+                
+                <form-error>
+                  <!--container-->
+                </form-error>
+                <!--container-->
+              </div>
+              <div class="col-12">
+                <label for="Description" class="form-label">Asset Description</label>
+                <input type="text" id="Description" formcontrolname="Description" class="form-control ng-untouched ng-pristine ng-invalid">
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+              <div class="col-12 col-md-4">
+                <label for="Year" class="form-label">Year</label>
+                <input type="number" id="Year" formcontrolname="Year" class="form-control ng-untouched ng-pristine ng-valid">
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+              <div class="col-12 col-md-4">
+                <label for="Make" class="form-label">Make</label>
+                <input type="text" id="Make" formcontrolname="Make" class="form-control ng-untouched ng-pristine ng-valid">
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+              <div class="col-12 col-md-4">
+                <label for="ModelNumber" class="form-label">Model Number</label>
+                <input type="text" id="ModelNumber" formcontrolname="ModelNumber" class="form-control ng-untouched ng-pristine ng-valid">
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+              <div class="col-12 col-md-7">
+                <label for="SerialNumber" class="form-label">Serial Number</label>
+                <input type="text" id="SerialNumber" formcontrolname="SerialNumber" class="form-control ng-untouched ng-pristine ng-valid">
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-4">
+    <div class="row row-gap-3">
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="display-7 mb-0">Surplus Information</h3>
+          </div>
+          <div class="card-body">
+            <div class="row row-gap-3">
+              <div class="col-12">
+                <label for="SurplusTagNumber" class="form-label">Surplus Tag Number</label>
+                <input type="text" id="SurplusTagNumber" formcontrolname="SurplusTagNumber" class="form-control ng-untouched ng-pristine ng-valid">
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+              <div class="col-12">
+                <label for="AgendaItemNumber" class="form-label">Agenda Item Number</label>
+                <input type="text" id="AgendaItemNumber" formcontrolname="AgendaItemNumber" class="form-control ng-untouched ng-pristine ng-valid">
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+              <div class="col-12">
+                <label for="CurrentLocation" class="form-label">Current Location</label>
+                <input type="text" id="CurrentLocation" formcontrolname="CurrentLocation" class="form-control ng-untouched ng-pristine ng-valid">
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+              <div class="col-12">
+                <label for="DisposalRecommendationId" class="form-label">Disposal Recommendation</label>
+                <select id="DisposalRecommendationId" formcontrolname="DisposalRecommendationId" class="form-select ng-untouched ng-pristine ng-valid">
+                  <option value="0">None</option>
+                  <option value="1">Unfit for Use</option>
+                  <option value="2">Recyle (Electronics)</option>
+                  <option value="3">Scrap</option>
+                  <option value="4">Sell</option>
+                  <option value="5">Sell</option>
+                  <option value="6">Sold Previously</option>
+                  <option value="7">Trade In</option>
+                  <option value="8">Dept. Transfer</option>
+                  <option value="9">Govt. Transfer</option>
+                </select>
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input type="checkbox" id="IsComputerEquipment" formcontrolname="IsComputerEquipment" class="form-check-input ng-untouched ng-pristine ng-valid">
+                  <label for="IsComputerEquipment" class="form-check-label"> Computer Equipment </label>
+                  <form-error>
+                    <!--container-->
+                  </form-error>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-check">
+                  <input type="checkbox" id="DeliveredToAuctionBuilding" formcontrolname="DeliveredToAuctionBuilding" class="form-check-input ng-untouched ng-pristine ng-valid">
+                  <label for="DeliveredToAuctionBuilding" class="form-check-label"> Delivered to Auction Building </label>
+                  <form-error>
+                    <!--container-->
+                  </form-error>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="card">
+          <div class="card-header">
+            <h3 class="display-7 mb-0">Disposal Information</h3>
+          </div>
+          <div class="card-body">
+            <div class="row row-gap-3">
+              <div class="col-12">
+                <label for="DisposalMethod" class="form-label">Disposal Method</label>
+                <select id="DisposalMethod" formcontrolname="DisposalMethod" class="form-select ng-untouched ng-pristine ng-valid">
+                  <option value="0">None</option>
+                  <option value="1">Sold</option>
+                  <option value="2">Transferred</option>
+                  <option value="3">Solid Waste Disposal</option>
+                  <option value="4">Scrap</option>
+                  <option value="5">Trade In</option>
+                  <option value="6">Recycled</option>
+                  <option value="7">Auction</option>
+                </select>
+                <form-error>
+                  <!--container-->
+                </form-error>
+              </div>
+              <!--container-->
+              <!--container-->
+              <!--container-->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 text-end">
+    <button type="submit" class="btn btn-primary" disabled="">Create</button>
+  </div>
+</div>

@@ -58,6 +58,11 @@ export class App {
       route: '/edit',
       icon: 'edit',
     },
+        {
+      title: 'Long Page',
+      route: '/long',
+      icon: 'two_pager',
+    },
     {
       title: 'Editor',
       route: '/edit',

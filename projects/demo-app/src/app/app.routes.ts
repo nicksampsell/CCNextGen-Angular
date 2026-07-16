@@ -5,6 +5,7 @@ import { ErrorPage } from '../components/error.component';
 import { DashboardPage } from '../components/dashboard.component';
 import { DeepNestedPage } from '../components/deep-nested.component';
 import { DeepNested2Page } from '../components/deep-nested2.component';
+import { LongComponent } from '../components/long.component';
 
 export const routes: Routes = [
     {
@@ -42,6 +43,10 @@ export const routes: Routes = [
         {
         path: 'deeply/nested/crate',
         component: DeepNested2Page
+    },
+    {
+        path: 'long',
+        component: LongComponent
     },
     {
         path:'**',
